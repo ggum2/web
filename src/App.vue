@@ -16,7 +16,7 @@
         name: 'app',
         metaInfo: {
             title: 'Index',
-            titleTemplate: '%s - Vue Starter'
+            titleTemplate: '%s - 주원이'
         },
         updated () {
             // Remove loading state
