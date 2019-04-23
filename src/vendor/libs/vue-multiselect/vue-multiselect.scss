@@ -33,6 +33,10 @@ $vue-multiselect-select-arrow-width: 2.5rem !default;
     background: transparent;
   }
 
+  &.multiselect--active .multiselect__input {
+    width: auto !important;
+  }
+
   .multiselect__single,
   .multiselect__tag,
   .multiselect__placeholder {

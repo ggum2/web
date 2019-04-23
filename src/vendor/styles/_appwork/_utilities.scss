@@ -17,19 +17,17 @@
 
 .text-expanded         { letter-spacing: ((1 / (strip-unit($font-size-base) * 16)) * 1em) !important; }
 
-.font-weight-light     { font-weight: $font-weight-light !important; }
 .font-weight-semibold  { font-weight: $font-weight-semibold !important; }
-.font-weight-bolder    { font-weight: $font-weight-bolder !important; }
-.text-decoration-none  { text-decoration: none !important; }
 .text-transform-none   { text-transform: none !important; }
 
-.overflow-hidden       { overflow: hidden !important; }
-.overflow-scroll       { overflow: scroll !important; }
-.overflow-auto         { overflow: auto !important; }
-
-.box-shadow-none       { box-shadow: none !important; }
+.text-sans-serif       { font-family: $font-family-sans-serif !important; }
+.text-serif            { font-family: $font-family-serif !important; }
 
 .cursor-pointer        { cursor: pointer !important; }
+.cursor-move {
+  cursor: move !important; // Fallback
+  cursor: grab !important;
+}
 
 // *******************************************************************************
 // * Layout containers
@@ -43,7 +41,7 @@
     padding-left: $container-padding-x !important;
   }
 }
-.container-m--x {
+.container-m-nx {
   margin-right: -$container-padding-x-sm !important;
   margin-left: -$container-padding-x-sm !important;
 
@@ -61,7 +59,7 @@
     padding-bottom: $container-padding-y !important;
   }
 }
-.container-m--y {
+.container-m-ny {
   &:not([class^="mt-"]):not([class*=" mt-"]) {
     margin-top: -$container-padding-y !important;
   }
@@ -70,9 +68,8 @@
   }
 }
 
-
-// Transforms
-//
+// *******************************************************************************
+// * Transforms
 
 .rotate-90 { transform: rotate(90deg); }
 .rotate-180 { transform: rotate(180deg); }
@@ -180,35 +177,11 @@
 }
 
 // *******************************************************************************
-// * Negative horizontal margins
+// * Table cell
 
-@each $breakpoint in map-keys($grid-breakpoints) {
-  @include media-breakpoint-up($breakpoint) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-    $rtl-prefix: if($rtl-support == true, 'html:not([dir=rtl]) body:not([dir=rtl]) ', '');
-
-    @each $size, $length in $spacers {
-      #{$rtl-prefix}.mr#{$infix}--#{$size},
-      #{$rtl-prefix}.mx#{$infix}--#{$size} {
-        margin-right: -$length !important;
-      }
-      #{$rtl-prefix}.ml#{$infix}--#{$size},
-      #{$rtl-prefix}.mx#{$infix}--#{$size} {
-        margin-left: -$length !important;
-      }
-
-      @if $rtl-support == true {
-        .mr#{$infix}--#{$size},
-        .mx#{$infix}--#{$size} {
-          margin-left: -$length !important;
-        }
-        .ml#{$infix}--#{$size},
-        .mx#{$infix}--#{$size} {
-          margin-right: -$length !important;
-        }
-      }
-    }
-  }
+.cell-fit {
+  width: .1%;
+  white-space: nowrap;
 }
 
 // *******************************************************************************
@@ -241,17 +214,8 @@
 // *******************************************************************************
 // * Text color
 
-.text-dark {
-  color: $body-color !important;
-
-  &[href] {
-    &:hover {
-      color: $link-hover-color !important;
-    }
-    &:focus:not(:hover) {
-      color: $body-color !important;
-    }
-  }
+.text-body[href]:hover {
+  color: $link-hover-color !important;
 }
 
 .text-muted[href] {
@@ -306,16 +270,15 @@ a.bg-lightest {
   @include hover-focus { background-color: $gray-50 !important; }
 }
 
+.bg-transparent {
+  background-image: none !important;
+}
 
 // *******************************************************************************
 // * Border color
 
 .border-light {
   border-color: $gray-100 !important;
-}
-
-.border-dark {
-  border-color: $gray-900 !important;
 }
 
 .border-transparent {
@@ -326,26 +289,23 @@ a.bg-lightest {
 // * RTL
 
 @include rtl-only {
-  // Borders
-  //
-
-  .border          { border: $border-width solid $border-color !important; }
+  // Border
+  .border         { border: $border-width solid $border-color !important; }
+  .border-top     { border-top: $border-width solid $border-color !important; }
+  .border-right   { border-left: $border-width solid $border-color !important; }
+  .border-bottom  { border-bottom: $border-width solid $border-color !important; }
+  .border-left    { border-right: $border-width solid $border-color !important; }
   .border-0        { border: 0 !important; }
   .border-top-0    { border-top: 0 !important; }
   .border-right-0  { border-left: 0 !important; }
   .border-bottom-0 { border-bottom: 0 !important; }
   .border-left-0   { border-right: 0 !important; }
-
   @each $color, $value in $theme-colors {
-    .border-#{$color} {
-      border-color: $value !important;
-    }
+    .border-#{$color} { border-color: $value !important; }
   }
+  .border-white { border-color: $white !important; }
 
-  .border-white {
-    border-color: $white !important;
-  }
-
+  // Border-radius
   .rounded {
     border-radius: $border-radius !important;
   }
@@ -365,30 +325,21 @@ a.bg-lightest {
     border-top-right-radius: $border-radius !important;
     border-bottom-right-radius: $border-radius !important;
   }
-
-  .rounded-circle {
-    border-radius: 50% !important;
-  }
-
-  .rounded-0 {
-    border-radius: 0 !important;
-  }
+  .rounded-circle { border-radius: 50% !important; }
+  .rounded-pill { border-radius: $rounded-pill !important; }
+  .rounded-0 { border-radius: 0 !important; }
 
   // Float
-  //
-
   @each $breakpoint in map-keys($grid-breakpoints) {
     @include media-breakpoint-up($breakpoint) {
       $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
-      .float#{$infix}-left  { @include float-right; }
-      .float#{$infix}-right { @include float-left; }
+      .float#{$infix}-left  { float: right !important; }
+      .float#{$infix}-right { float: left !important; }
     }
   }
 
   // Responsive alignment
-  //
-
   @each $breakpoint in map-keys($grid-breakpoints) {
     @include media-breakpoint-up($breakpoint) {
       $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
@@ -398,16 +349,13 @@ a.bg-lightest {
     }
   }
 
-  // Spacing
-  //
-
+  // Margin and Padding
   @each $breakpoint in map-keys($grid-breakpoints) {
     @include media-breakpoint-up($breakpoint) {
       $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
       @each $prop, $abbrev in (margin: m, padding: p) {
         @each $size, $length in $spacers {
-
           .#{$abbrev}#{$infix}-#{$size} { #{$prop}: $length !important; }
           .#{$abbrev}t#{$infix}-#{$size},
           .#{$abbrev}y#{$infix}-#{$size} {
@@ -424,6 +372,29 @@ a.bg-lightest {
           .#{$abbrev}l#{$infix}-#{$size},
           .#{$abbrev}x#{$infix}-#{$size} {
             #{$prop}-right: $length !important;
+          }
+        }
+      }
+
+      // Negative margins (e.g., where `.mb-n1` is negative version of `.mb-1`)
+      @each $size, $length in $spacers {
+        @if $size != 0 {
+          .m#{$infix}-n#{$size} { margin: -$length !important; }
+          .mt#{$infix}-n#{$size},
+          .my#{$infix}-n#{$size} {
+            margin-top: -$length !important;
+          }
+          .mr#{$infix}-n#{$size},
+          .mx#{$infix}-n#{$size} {
+            margin-left: -$length !important;
+          }
+          .mb#{$infix}-n#{$size},
+          .my#{$infix}-n#{$size} {
+            margin-bottom: -$length !important;
+          }
+          .ml#{$infix}-n#{$size},
+          .mx#{$infix}-n#{$size} {
+            margin-right: -$length !important;
           }
         }
       }

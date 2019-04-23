@@ -12,6 +12,10 @@ body {
   background: $body-bg;
 }
 
+.bg-body {
+  background: $body-bg !important;
+}
+
 @include appwork-common-theme($primary-color);
 @include appwork-libs-theme($primary-color);
 @include appwork-uikit-theme($primary-color);
@@ -21,7 +25,7 @@ body {
 @include appwork-navbar-variant('.bg-navbar-theme', $body-bg, $color: $text-muted, $active-color: $body-color);
 
 .layout-navbar {
-  box-shadow: 0 1px 0 rgba($black, 0.04);
+  box-shadow: 0 1px 0 $border-color;
 }
 
 // Sidenav
@@ -57,7 +61,7 @@ body {
 }
 
 .layout-sidenav-horizontal {
-  box-shadow: 0 -1px 0 rgba(24, 28, 33, .04) inset;
+  box-shadow: 0 -1px 0 $border-color inset;
 }
 
 // Footer
@@ -65,13 +69,13 @@ body {
 @include appwork-footer-variant('.bg-footer-theme', $body-bg, $color: $text-muted, $active-color: $body-color);
 
 .layout-footer {
-  box-shadow: 0 -1px 0 rgba($black, 0.04);
+  box-shadow: 0 -1px 0 $border-color;
 }
 
 // Custom styling
 
 hr {
-  border-color: rgba($black, 0.04);
+  border-color: $border-color;
 }
 
 .card,

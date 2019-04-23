@@ -11,15 +11,11 @@
 
 .modal-content {
   box-shadow: $modal-content-box-shadow-xs;
-
-  @if $material-style {
-    border-radius: 0;
-  }
 }
 
 .modal-header {
   position: relative;
-  padding: $modal-header-padding-y ($modal-header-padding-x + 1rem) if($material-style, 0, $modal-header-padding-y) $modal-header-padding-x;
+  padding-right: $modal-header-padding-x + 1rem;
 
   @include rtl-style {
     padding-right: $modal-header-padding-x;
@@ -31,16 +27,12 @@
   padding: $modal-footer-padding;
 
   @include rtl-style {
-     > * {
-      margin-right: 0;
+    > :not(:first-child) {
       margin-left: 0;
-    }
-
-     > :not(:first-child) {
       margin-right: .25rem;
     }
-
-     > :not(:last-child) {
+    > :not(:last-child) {
+      margin-right: 0;
       margin-left: .25rem;
     }
   }
@@ -82,11 +74,22 @@
 }
 
 @include media-breakpoint-up(lg) {
-  ngb-modal-window.modal-lg {
+  ngb-modal-window.modal-lg,
+  ngb-modal-window.modal-xl {
     max-width: none;
   }
-  .modal-lg .modal-dialog {
+  .modal-lg .modal-dialog,
+  .modal-xl .modal-dialog {
     max-width: $modal-lg;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  ngb-modal-window.modal-xl {
+    max-width: none;
+  }
+  .modal-xl .modal-dialog {
+    max-width: $modal-xl;
   }
 }
 
@@ -99,7 +102,7 @@
   }
 
   .modal-content {
-    @include border-top-radius(0 !important);
+    @include border-top-radius(0);
   }
 }
 

@@ -26,6 +26,7 @@
   @include appwork-navbar-variant('.navbar.bg-primary', $primary-color);
   @include appwork-sidenav-variant('.sidenav.bg-primary', $primary-color);
   @include appwork-footer-variant('.footer.bg-primary', $primary-color);
+  @include appwork-toast-theme('.bg-primary', $primary-color, $color);
   .fill-primary { fill: $background }
 }
 
@@ -54,5 +55,6 @@
   @include appwork-navbar-variant('.navbar.bg-primary', $primary-color);
   @include appwork-sidenav-variant('.sidenav.bg-primary', $primary-color);
   @include appwork-footer-variant('.footer.bg-primary', $primary-color);
+  @include appwork-toast-theme('.bg-primary', $primary-color, $color);
   .fill-primary { fill: $background }
 }

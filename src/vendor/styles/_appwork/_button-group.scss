@@ -2,31 +2,31 @@
 //
 
 @if not $material-style {
-  :not(.btn-group) > .btn-group > .btn:not(.btn-default):not([class*="btn-outline-"]):first-child,
-  .btn-group > .btn-group:first-child > .btn:not(.btn-default):not([class*="btn-outline-"]):first-child,
-  .input-group-prepend > .btn:not(.btn-default):not([class*="btn-outline-"]):first-child,
-  .input-group-append > .btn:not(.btn-default):not([class*="btn-outline-"]):first-child {
+  :not(.btn-group):not(.input-group-prepend):not(.input-group-append)>.btn-group>.btn:not(.btn-default):not([class*="btn-outline-"]):first-child,
+  .btn-group>.btn-group:first-child>.btn:not(.btn-default):not([class*="btn-outline-"]):first-child,
+  .input-group-prepend>.btn:not(.btn-default):not([class*="btn-outline-"]):first-child,
+  .input-group-append>.btn:not(.btn-default):not([class*="btn-outline-"]):first-child,
+  .input-group-prepend>.btn-group:first-child>.btn:not(.btn-default):not([class*="btn-outline-"]):first-child,
+  .input-group-append>.btn-group:first-child>.btn:not(.btn-default):not([class*="btn-outline-"]):first-child {
     @include ltr-style {
-      border-left-color: transparent !important;
+      border-left-color: transparent;
     }
     @include rtl-style {
-      border-right-color: transparent !important;
+      border-right-color: transparent;
     }
   }
 
-  :not(.btn-group) > .btn-group > .btn:not(.btn-default):not([class*="btn-outline-"]):last-child,
-  .btn-group > .btn-group:last-child > .btn:not(.btn-default):not([class*="btn-outline-"]):last-child,
-  :not(.btn-group) > .btn-group > .dropdown-toggle:not(.btn-default):not([class*="btn-outline-"]),
-  .btn-group > .btn-group:last-child > .dropdown-toggle:not(.btn-default):not([class*="btn-outline-"]),
-  .input-group-prepend > .btn:not(.btn-default):not([class*="btn-outline-"]):last-child,
-  .input-group-append > .btn:not(.btn-default):not([class*="btn-outline-"]):last-child,
-  .input-group-prepend > .dropdown-toggle:not(.btn-default):not([class*="btn-outline-"]),
-  .input-group-append > .dropdown-toggle:not(.btn-default):not([class*="btn-outline-"]) {
+  :not(.btn-group):not(.input-group-prepend):not(.input-group-append)>.btn-group>.btn:not(.btn-default):not([class*="btn-outline-"]):last-of-type,
+  .btn-group>.btn-group:last-child>.btn:not(.btn-default):not([class*="btn-outline-"]):last-of-type,
+  .input-group-append>.btn:not(.btn-default):not([class*="btn-outline-"]):last-of-type,
+  .input-group-prepend>.btn:not(.btn-default):not([class*="btn-outline-"]):last-of-type,
+  .input-group-append>.btn-group:last-child>.btn:not(.btn-default):not([class*="btn-outline-"]):last-of-type,
+  .input-group-prepend>.btn-group:last-child>.btn:not(.btn-default):not([class*="btn-outline-"]):last-of-type {
     @include ltr-style {
-      border-right-color: transparent !important;
+      border-right-color: transparent;
     }
     @include rtl-style {
-      border-left-color: transparent !important;
+      border-left-color: transparent;
     }
   }
 }
@@ -36,14 +36,6 @@
 
 .btn-group-xs > .btn {
   @extend .btn-xs;
-}
-
-.btn-group-sm > .btn {
-  font-size: $input-btn-font-size-sm;
-}
-
-.btn-group-lg > .btn {
-  font-size: $input-btn-font-size-lg;
 }
 
 .btn-group-xl > .btn {
@@ -80,71 +72,57 @@
 // * RTL
 
 @include rtl-only {
-  .btn-group .btn:not(.btn-round) {
-    @include border-radius($border-radius !important);
+  .btn-group .btn[class] {
+    @include border-radius($border-radius);
   }
 
-  .btn-group .btn-xs:not(.btn-round),
-  .btn-group-xs .btn:not(.btn-round) {
-    @include border-radius($border-radius-xs !important);
+  .btn-group .btn-xs[class],
+  .btn-group-xs .btn[class] {
+    @include border-radius($border-radius-xs);
   }
 
-  .btn-group .btn-sm:not(.btn-round),
-  .btn-group-sm .btn:not(.btn-round) {
-    @include border-radius($border-radius-sm !important);
+  .btn-group .btn-sm[class],
+  .btn-group-sm .btn[class] {
+    @include border-radius($border-radius-sm);
   }
 
-  .btn-group .btn-lg:not(.btn-round),
-  .btn-group-lg .btn:not(.btn-round) {
-    @include border-radius($border-radius-lg !important);
+  .btn-group .btn-lg[class],
+  .btn-group-lg .btn[class] {
+    @include border-radius($border-radius-lg);
   }
 
-  .btn-group .btn-xl:not(.btn-round),
-  .btn-group-xl .btn:not(.btn-round) {
-    @include border-radius($border-radius-xl !important);
+  .btn-group .btn-xl[class],
+  .btn-group-xl .btn[class] {
+    @include border-radius($border-radius-xl);
   }
 
   .btn-group {
-    .btn + .btn,
-    .btn + .btn-group,
-    .btn-group + .btn,
-    .btn-group + .btn-group {
-      margin-right: -$input-btn-border-width;
+    > .btn:not(:first-child),
+    > .btn-group:not(:first-child) {
       margin-left: 0;
-    }
-
-    > .btn:first-child {
-      margin-left: 0;
+      margin-right: -$btn-border-width;
     }
 
     > .btn:not(:last-child):not(.dropdown-toggle),
     > .btn-group:not(:last-child) > .btn {
-      @include border-left-radius(0 !important);
+      @include border-left-radius(0);
     }
 
     > .btn:not(:first-child),
     > .btn-group:not(:first-child) > .btn {
-      @include border-right-radius(0 !important);
+      @include border-right-radius(0);
     }
   }
 
   .btn-group-vertical {
-    .btn:not([class*=btn-outline]) {
-      border-right-color: transparent !important;
-      border-left-color: transparent !important;
+    > .btn:not(:last-child):not(.dropdown-toggle),
+    > .btn-group:not(:last-child) > .btn {
+      @include border-bottom-radius(0);
     }
 
-    > .btn:not(:first-child):not(:last-child),
-    > .btn-group:not(:first-child):not(:last-child) > .btn {
-      border-radius: 0 !important;
-    }
-
-    > .btn-group:first-child:not(:last-child) > .btn {
-      @include border-bottom-radius(0 !important);
-    }
-
-    > .btn-group:last-child:not(:first-child) > .btn {
-      @include border-top-radius(0 !important);
+    > .btn:not(:first-child),
+    > .btn-group:not(:first-child) > .btn {
+      @include border-top-radius(0);
     }
   }
 }

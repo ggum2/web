@@ -865,7 +865,7 @@
     }
 
     &.ql-container {
-      border: .0625rem solid $card-border-color;
+      border: .0625rem solid $input-border-color;
     }
 
     .ql-editor {
@@ -874,7 +874,7 @@
 
     &.ql-toolbar,
     & .ql-toolbar {
-      border: .0625rem solid $card-border-color;
+      border: .0625rem solid $input-border-color;
 
       @media (pointer: coarse) {
         button:hover:not(.ql-active) {
@@ -912,7 +912,7 @@
       color: $body-color;
 
       &.ql-expanded .ql-picker-label {
-        border-color: $card-border-color;
+        border-color: $input-border-color;
       }
 
       &.ql-expanded .ql-picker-options {
@@ -1010,7 +1010,7 @@
     }
 
     &.ql-container {
-      border: .0625rem solid $card-border-color;
+      border: .0625rem solid $input-border-color;
     }
 
     .ql-editor {
@@ -1019,7 +1019,7 @@
 
     &.ql-toolbar,
     & .ql-toolbar {
-      border: .0625rem solid $card-border-color;
+      border: .0625rem solid $input-border-color;
 
       @media (pointer: coarse) {
         button:hover:not(.ql-active) {
@@ -1057,7 +1057,7 @@
       color: $body-color;
 
       &.ql-expanded .ql-picker-label {
-        border-color: $card-border-color;
+        border-color: $input-border-color;
       }
 
       &.ql-expanded .ql-picker-options {

@@ -11,6 +11,12 @@ $custom-colors: (
   facebook: #3B5998,
   pinterest: #bd121c,
   instagram: #000,
+  flickr: #ff0084,
+  linkedin: #0077b5,
+  periscope: #40a4c4,
+  tumblr: #35465c,
+  vimeo: #1ab7ae,
+  youtube: #b31217,
 
   windows: #26AAE1,
   macos: #343434,
@@ -20,6 +26,27 @@ $custom-colors: (
 @each $color-name, $color-value in $custom-colors {
   @include text-emphasis-variant('.text-#{$color-name}', $color-value);
   @include bg-variant('.bg-#{$color-name}', $color-value);
+
+  @include appwork-material-button-variant('.btn-#{$color-name}', $color-value);
+  @include appwork-material-button-outline-variant('.btn-outline-#{$color-name}', $color-value);
+}
+
+// *******************************************************************************
+// * Bootstrap colors (Uncomment required colors)
+
+$bootstrap-colors: (
+  // blue: $blue,
+  // indigo: $indigo,
+  // purple: $purple,
+  // pink: $pink,
+  // orange: $orange,
+  // teal: $teal
+) !default;
+
+@each $color-name, $color-value in $bootstrap-colors {
+  @include text-emphasis-variant('.text-#{$color-name}', $color-value);
+  @include bg-variant('.bg-#{$color-name}', $color-value);
+  .border-#{$color-name} { border-color: $color-value !important; }
 
   @include appwork-material-button-variant('.btn-#{$color-name}', $color-value);
   @include appwork-material-button-outline-variant('.btn-outline-#{$color-name}', $color-value);

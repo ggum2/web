@@ -4,10 +4,14 @@
 @import "./_theme/uikit";
 
 $primary-color: #fc5a5c;
-$body-bg: #fbfbfb;
+$body-bg: #f8f8f8;
 
 body {
   background: $body-bg;
+}
+
+.bg-body {
+  background: $body-bg !important;
 }
 
 @include appwork-common-material-theme($primary-color);
@@ -19,7 +23,7 @@ body {
 @include appwork-navbar-variant('.bg-navbar-theme', $body-bg, $color: $text-muted, $active-color: $body-color);
 
 .layout-navbar {
-  box-shadow: 0 1px 0 rgba($black, 0.04);
+  box-shadow: 0 1px 0 $border-color;
 }
 
 // Sidenav
@@ -54,11 +58,11 @@ body {
 @include appwork-footer-variant('.bg-footer-theme', $body-bg, $color: $text-muted, $active-color: $body-color);
 
 .layout-footer {
-  box-shadow: 0 -1px 0 rgba($black, 0.04);
+  box-shadow: 0 -1px 0 $border-color;
 }
 
 // Custom styling
 
 hr {
-  border-color: rgba($black, 0.04);
+  border-color: $border-color;
 }

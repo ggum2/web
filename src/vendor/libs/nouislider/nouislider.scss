@@ -44,6 +44,8 @@ $nouislider-tick-label-font-size: .625rem !default;
   height: 100%;
   transform-origin: 0 0;
   will-change: transform;
+  -webkit-transform-style: preserve-3d;
+  transform-style: flat;
 }
 
 .noUi-vertical .noUi-origin {
@@ -60,9 +62,11 @@ $nouislider-tick-label-font-size: .625rem !default;
 }
 
 .noUi-handle {
+  backface-visibility: hidden;
   position: absolute;
   outline: none !important;
   transition: transform .2s;
+  transform-origin: center;
 
   &::before {
     content: "";
@@ -78,6 +82,11 @@ $nouislider-tick-label-font-size: .625rem !default;
   &.noUi-active {
     transform: scale(1.4, 1.4);
   }
+}
+
+.noUi-touch-area {
+  height: 100%;
+  width: 100%;
 }
 
 .noUi-horizontal .noUi-handle.noUi-active .noUi-tooltip {

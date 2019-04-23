@@ -241,7 +241,7 @@
   }
 
   #{$parent} .waves-ripple {
-    background: if($color == #fff, rgba($color, .3), rgba($color, .2)) !important;
+    background: if($color == #fff, rgba($color, .3), rgba($color, .2));
   }
 
   #{$parent}:active,
@@ -253,24 +253,24 @@
 
   // Flat buttons
   #{$parent}.md-btn-flat {
-    background: none !important;
-    box-shadow: none !important;
-    color: $md-color !important;
+    background: none;
+    box-shadow: none;
+    color: $md-color;
 
     &:focus,
     &.focus {
-      background: rgba($md-color, .1) !important;
+      background: rgba($md-color, .1);
     }
 
     .waves-ripple {
-      background: rgba($md-color, .3) !important;
+      background: rgba($md-color, .3);
     }
   }
 
   #{$parent}.md-btn-flat:active,
   #{$parent}.md-btn-flat.active,
   .show > #{$parent}.md-btn-flat.dropdown-toggle {
-    background: rgba($md-color, .15) !important;
+    background: rgba($md-color, .15);
   }
 
   // Disabled
@@ -308,11 +308,6 @@
       border-color: map-get($btn-colors, border);
       background: $color;
       color: $color-hover;
-
-      .badge {
-        background: $color-hover;
-        color: if(alpha($color) == 1, $color, yiq($color-hover));
-      }
     }
 
     &:focus,
@@ -328,11 +323,6 @@
     }
   }
 
-  #{$parent} .badge {
-    background: $color;
-    color: #fff;
-  }
-
   #{$parent}:active,
   #{$parent}.active,
   .show > #{$parent}.dropdown-toggle {
@@ -345,11 +335,22 @@
     } @else {
       box-shadow: none;
     }
+  }
 
-    .badge {
-      background: $color-hover;
-      color: if(alpha($color) == 1, $color, yiq($color-hover));
-    }
+  #{$parent} .badge {
+    background: $color;
+    border-color: $color;
+    color: #fff;
+  }
+
+  #{$parent}:hover .badge,
+  #{$parent}:focus .badge,
+  #{$parent}:active .badge,
+  #{$parent}.active .badge,
+  .show > #{$parent}.dropdown-toggle .badge {
+    background: $color-hover;
+    border-color: $color-hover;
+    color: if(alpha($color)==1, $color, yiq($color-hover));
   }
 }
 
@@ -366,11 +367,6 @@
       background: $color;
       box-shadow: $btn-focus-box-shadow;
       color: $color-hover;
-
-      .badge {
-        background: $color-hover;
-        color: if(alpha($color) == 1, $color, yiq($color-hover));
-      }
     }
 
     &.disabled,
@@ -381,26 +377,32 @@
     }
   }
 
-  #{$parent} .badge {
-    background: $color;
-    color: #fff;
-  }
-
-  #{$parent} .waves-ripple {
-    background: if($color-hover == #fff, rgba($color-hover, .3), rgba($color-hover, .2)) !important;
-  }
-
   #{$parent}:active,
   #{$parent}.active,
   .show > #{$parent}.dropdown-toggle {
     background: map-get($btn-colors, bg-hover);
     box-shadow: $btn-active-box-shadow;
     color: $color-hover;
+  }
 
-    .badge {
-      background: $color-hover;
-      color: if(alpha($color) == 1, $color, yiq($color-hover));
-    }
+  #{$parent} .waves-ripple {
+    background: if($color-hover==#fff, rgba($color-hover, .3), rgba($color-hover, .2));
+  }
+
+  #{$parent} .badge {
+    background: $color;
+    border-color: $color;
+    color: #fff;
+  }
+
+  #{$parent}:hover .badge,
+  #{$parent}:focus .badge,
+  #{$parent}:active .badge,
+  #{$parent}.active .badge,
+  .show > #{$parent}.dropdown-toggle .badge {
+    background: $color-hover;
+    border-color: $color-hover;
+    color: if(alpha($color)==1, $color, yiq($color-hover));
   }
 }
 
@@ -424,7 +426,8 @@
   }
 
   .btn #{$parent} {
-    background-color: $bg !important;
+    background: $bg !important;
+    border-color: $bg !important;
     color: if($color, $color, yiq($bg)) !important;
   }
 }
@@ -548,9 +551,9 @@
   #{$parent} .page-item.active .page-link,
   #{$parent}.pagination li.active > a:not(.page-link) {
     @include plain-hover-focus {
-      border-color: $background !important;
-      background-color: $background !important;
-      color: if($color, $color, yiq($background)) !important;
+      border-color: $background;
+      background-color: $background;
+      color: if($color, $color, yiq($background));
     }
   }
 }
@@ -695,25 +698,23 @@
       color: $color;
     }
 
-    .arrow::before { border-color: transparent !important; }
+    > .arrow::before { border-color: transparent; }
 
-    &.bs-popover-top .arrow::after, &.bs-popover-auto[x-placement^="top"] .arrow::after { border-top-color: $background; }
-    &.bs-popover-right .arrow::after, &.bs-popover-auto[x-placement^="right"] .arrow::after { border-right-color: $background; }
-    &.bs-popover-bottom .arrow::after, &.bs-popover-auto[x-placement^="bottom"] .arrow::after { border-bottom-color: $background; }
-    &.bs-popover-left .arrow::after, &.bs-popover-auto[x-placement^="left"] .arrow::after { border-left-color: $background; }
+    &.bs-popover-top > .arrow::after, &.bs-popover-auto[x-placement^="top"] > .arrow::after { border-top-color: $background; }
+    &.bs-popover-right > .arrow::after, &.bs-popover-auto[x-placement^="right"] > .arrow::after { border-right-color: $background; }
+    &.bs-popover-bottom > .arrow::after, &.bs-popover-auto[x-placement^="bottom"] > .arrow::after { border-bottom-color: $background; }
+    &.bs-popover-left > .arrow::after, &.bs-popover-auto[x-placement^="left"] > .arrow::after { border-left-color: $background; }
   }
 }
 
 // *******************************************************************************
 // * Form controls
 
-@mixin appwork-custom-select-size($size, $padding-y, $padding-x, $height, $font-size, $line-height) {
+@mixin appwork-custom-select-size($size, $padding-x, $line-height, $font-size) {
   .custom-select-#{$size},
   .input-group-#{$size} .custom-select {
-    padding: $padding-y ($padding-x + $custom-select-indicator-padding) $padding-y $padding-x;
-    height: $height;
+    padding-right: $padding-x + $custom-select-indicator-padding;
     background-position: right $padding-x center;
-    font-size: $font-size;
     line-height: $line-height;
 
     @include rtl-style {
@@ -736,7 +737,7 @@
 
   #{$parent} {
     @if $default-background {
-      .custom-control-label::before,
+      .custom-control-input ~ .custom-control-label::before,
       .custom-control-input:active ~ .custom-control-label::before {
         background-color: $default-background;
       }
@@ -783,7 +784,7 @@
 
   #{$parent} {
     @if $default-background {
-      .custom-control-label::before,
+      .custom-control-input ~ .custom-control-label::before,
       .custom-control-input:active ~ .custom-control-label::before {
         background-color: $default-background;
       }
@@ -805,7 +806,7 @@
       background-image: url(str-replace(str-replace($custom-checkbox-indicator-bg, '_COLOR_', $color), "#", "%23"));
     }
 
-    &.custom-radio .custom-control-label::before {
+    &.custom-radio .custom-control-input ~ .custom-control-label::before {
       background-image: url(str-replace(str-replace($custom-radio-indicator-bg, '_COLOR_', $background), "#", "%23"));
     }
 
@@ -819,11 +820,22 @@
   @include appwork-material-custom-control-variant('.custom-control', $background, $color);
 }
 
-@mixin form-validation-state($state: null, $color: null) {}
+@mixin form-validation-state($state: null, $color: null, $icon: null) {}
 
-@mixin appwork-form-validation-state($state, $color) {
+@mixin form-control-validated($parent, $state) {
+  #{$parent} {
+    .was-validated &:#{$state},
+    &.is-#{$state} {
+      @content;
+    }
+  }
+}
+
+@mixin appwork-form-validation-state($state, $color, $icon, $icon-rtl) {
   .#{$state}-feedback {
     display: none;
+    font-size: $form-feedback-font-size;
+    width: 100%;
     margin-top: $form-text-margin-top;
     color: $color;
   }
@@ -833,109 +845,180 @@
     top: 100%;
     z-index: 5;
     display: none;
+    max-width: 100%; // Contain to parent when possible
+    padding: $form-feedback-tooltip-padding-y $form-feedback-tooltip-padding-x;
     margin-top: .1rem;
-    padding: .5rem;
-    width: 250px;
-    border-radius: .2rem;
-    background-color: rgba($color,.8);
-    color: #fff;
-    line-height: 1;
+    font-size: $form-feedback-tooltip-font-size;
+    line-height: $form-feedback-tooltip-line-height;
+    color: color-yiq($color);
+    background-color: rgba($color, $form-feedback-tooltip-opacity);
+    @include border-radius($form-feedback-tooltip-border-radius);
   }
 
-  .form-control,
-  .custom-select {
-    .was-validated &:#{$state},
-    &.is-#{$state} {
-      border-color: $color !important;
-
-      &:focus {
-        border-color: $color !important;
-        box-shadow: 0 0 0 $component-focus-shadow-width rgba($color,.25) !important;
-      }
-
-       ~ .#{$state}-feedback,
-       ~ .#{$state}-tooltip {
-        display: block;
-      }
-    }
-  }
-
-  .was-validated .form-control-file:#{$state},
-  .form-control-file.is-#{$state} {
+  @include form-control-validated('.form-control, .custom-select, .form-control-file, .custom-control-input', $state) {
     ~ .#{$state}-feedback,
     ~ .#{$state}-tooltip {
       display: block;
     }
   }
 
-  .custom-control.custom-checkbox .custom-control-input,
-  .custom-control.custom-radio .custom-control-input {
-    .was-validated &:#{$state},
-    &.is-#{$state} {
-       ~ .custom-control-label {
-        color: $color;
-      }
+  @include form-control-validated('.form-control, .custom-select', $state) {
+    border-color: $color;
+  }
 
-      & ~ .custom-control-label::before,
-      &:focus ~ .custom-control-label::before,
-      &:active ~ .custom-control-label::before {
-        border-color: $color;
-      }
+  @include form-control-validated('.custom-control[class] .custom-control-input', $state) {
+    ~ .custom-control-label {
+      color: $color;
+    }
 
-      &:focus ~ .custom-control-label::before {
-        box-shadow: 0 0 0 $component-focus-shadow-width rgba($color, .4);
-      }
+    ~ .custom-control-label::before,
+    &:focus ~ .custom-control-label::before,
+    &:active ~ .custom-control-label::before {
+      border-color: $color;
+    }
 
-      &:checked ~ .custom-control-label::before {
-        border-color: $color;
-        background-color: $color;
-      }
+    &:focus ~ .custom-control-label::before {
+      box-shadow: 0 0 0 $component-focus-shadow-width rgba($color, .4);
+    }
 
-       ~ .#{$state}-feedback,
-       ~ .#{$state}-tooltip {
-        display: block;
+    &:checked ~ .custom-control-label::before {
+      border-color: $color;
+      background-color: $color;
+    }
+  }
+
+  @include form-control-validated('.custom-checkbox .custom-control-input', $state) {
+    &:checked ~ .custom-control-label::before {
+      background-image: url(str-replace(str-replace($custom-checkbox-indicator-bg, '_COLOR_', yiq($color)), "#", "%23"));
+    }
+  }
+
+  @include form-control-validated('.custom-radio .custom-control-input', $state) {
+    &:checked ~ .custom-control-label::before {
+      background-image: url(str-replace(str-replace($custom-radio-indicator-bg, '_COLOR_', yiq($color)), "#", "%23"));
+    }
+  }
+
+  @include form-control-validated('.custom-file-input', $state) {
+    ~ .custom-file-label {
+      border-color: $color;
+
+      &::after {
+        border-color: inherit;
       }
     }
   }
 
-  .custom-control.custom-checkbox .custom-control-input {
-    .was-validated &:#{$state},
-    &.is-#{$state} {
-      &:checked ~ .custom-control-label::before {
-        background-image: url(str-replace(str-replace($custom-checkbox-indicator-bg, '_COLOR_', yiq($color)), "#", "%23"));
+  // Validation icons
+  @if $enable-validation-icons {
+    // Inputs
+    @include form-control-validated('.form-control', $state) {
+      background-repeat: no-repeat;
+      background-size: calc(#{$input-height-inner} / 3) calc(#{$input-height-inner} / 3);
+
+      @include ltr-style {
+        background-image: $icon;
+        padding-right: $input-height-inner;
+        background-position: center right calc(#{$input-height-inner} / 3);
+      }
+
+      @include rtl-style {
+        background-image: $icon-rtl;
+        padding-left: $input-height-inner;
+        background-position: center left calc(#{$input-height-inner} / 3);
       }
     }
-  }
-  .custom-control.custom-radio .custom-control-input {
-    .was-validated &:#{$state},
-    &.is-#{$state} {
-      &:checked ~ .custom-control-label::before {
-        background-image: url(str-replace(str-replace($custom-radio-indicator-bg, '_COLOR_', yiq($color)), "#", "%23"));
+    @include form-control-validated('.form-control-sm', $state) {
+      @include ltr-style {
+        padding-right: $input-height-inner-sm;
+        background-position: center right calc(#{$input-height-inner-sm} / 4);
+      }
+      @include rtl-style {
+        padding-left: $input-height-inner-sm;
+        background-position: center left calc(#{$input-height-inner-sm} / 4);
       }
     }
-  }
-
-  .custom-file-input {
-    .was-validated &:#{$state},
-    &.is-#{$state} {
-       ~ .custom-file-label {
-        border-color: $color !important;
-
-        &::after {
-          border-color: inherit !important;
-        }
+    @include form-control-validated('.form-control-lg', $state) {
+      @include ltr-style {
+        padding-right: $input-height-inner-lg;
+        background-position: center right calc(#{$input-height-inner-lg} / 2.5);
       }
+      @include rtl-style {
+        padding-left: $input-height-inner-lg;
+        background-position: center left calc(#{$input-height-inner-lg} / 2.5);
+      }
+    }
 
-      &:focus {
-        box-shadow: 0 0 0 $component-focus-shadow-width rgba($color,.3) !important;
+    // Textareas
+    @include form-control-validated('textarea.form-control', $state) {
+      @include ltr-style {
+        background-position: top calc(#{$input-height-inner} / 3) right calc(#{$input-height-inner} / 3);
+      }
+      @include rtl-style {
+        background-position: top calc(#{$input-height-inner} / 3) left calc(#{$input-height-inner} / 3);
+      }
+    }
+    @include form-control-validated('textarea.form-control-sm', $state) {
+      @include ltr-style {
+        background-position: top calc(#{$input-height-inner-sm} / 4) right calc(#{$input-height-inner-sm} / 4);
+      }
+      @include rtl-style {
+        background-position: top calc(#{$input-height-inner-sm} / 4) left calc(#{$input-height-inner-sm} / 4);
+      }
+    }
+    @include form-control-validated('textarea.form-control-lg', $state) {
+      @include ltr-style {
+        background-position: top calc(#{$input-height-inner-lg} / 2.5) right calc(#{$input-height-inner-lg} / 2.5);
+      }
+      @include rtl-style {
+        background-position: top calc(#{$input-height-inner-lg} / 2.5) left calc(#{$input-height-inner-lg} / 2.5);
+      }
+    }
+
+    // Custom selects
+    @include form-control-validated('.custom-select[size="1"], .custom-select:not([size]):not([multiple])', $state) {
+      $form-feedback-icon-offset: (($input-height-inner - $custom-select-padding-x) / 3) + $custom-select-indicator-padding;
+      @include ltr-style {
+        padding-right: $custom-select-feedback-icon-padding;
+        background-image: $custom-select-indicator, $icon;
+        background-position: right $custom-select-padding-x center, right $form-feedback-icon-offset center;
+      }
+      @include rtl-style {
+        padding-left: $custom-select-feedback-icon-padding;
+        background-image: $custom-select-indicator-rtl, $icon-rtl;
+        background-position: left $custom-select-padding-x center, left $form-feedback-icon-offset center;
+      }
+    }
+    @include form-control-validated('.custom-select-sm[size="1"], .custom-select-sm:not([size]):not([multiple])', $state) {
+      $form-feedback-icon-offset: (($input-height-inner-sm - $custom-select-padding-x) / 4) + $custom-select-indicator-padding;
+      @include ltr-style {
+        padding-right: $custom-select-feedback-icon-padding-sm;
+        background-position: right $custom-select-padding-x-sm center, right $form-feedback-icon-offset center;
+      }
+      @include rtl-style {
+        padding-left: $custom-select-feedback-icon-padding-sm;
+        background-position: left $custom-select-padding-x-sm center, left $form-feedback-icon-offset center;
+      }
+    }
+    @include form-control-validated('.custom-select-lg[size="1"], .custom-select-lg:not([size]):not([multiple])', $state) {
+      $form-feedback-icon-offset: (($input-height-inner-lg - $custom-select-padding-x) / 2) + $custom-select-indicator-padding;
+      @include ltr-style {
+        padding-right: $custom-select-feedback-icon-padding-lg;
+        background-position: right $custom-select-padding-x-lg center, right $form-feedback-icon-offset center;
+      }
+      @include rtl-style {
+        padding-left: $custom-select-feedback-icon-padding-lg;
+        background-position: left $custom-select-padding-x-lg center, left $form-feedback-icon-offset center;
       }
     }
   }
 }
 
-@mixin appwork-material-form-validation-state($state, $color) {
+@mixin appwork-material-form-validation-state($state, $color, $icon, $icon-rtl) {
   .#{$state}-feedback {
     display: none;
+    font-size: $form-feedback-font-size;
+    width: 100%;
     margin-top: $form-text-margin-top;
     color: $color;
   }
@@ -945,89 +1028,121 @@
     top: 100%;
     z-index: 5;
     display: none;
+    max-width: 100%; // Contain to parent when possible
+    padding: $form-feedback-tooltip-padding-y $form-feedback-tooltip-padding-x;
     margin-top: .1rem;
-    padding: .5rem;
-    width: 250px;
-    border-radius: .2rem;
-    background-color: rgba($color,.8);
-    color: #fff;
-    line-height: 1;
+    font-size: $form-feedback-tooltip-font-size;
+    line-height: $form-feedback-tooltip-line-height;
+    color: color-yiq($color);
+    background-color: rgba($color, $form-feedback-tooltip-opacity);
+    @include border-radius($form-feedback-tooltip-border-radius);
   }
 
-  .form-control,
-  .custom-select {
-    .was-validated &:#{$state},
-    &.is-#{$state} {
-      border-color: $color !important;
-
-      &:focus {
-        box-shadow: 0 -1px 0 0 $color inset !important;
-      }
-
-       ~ .#{$state}-feedback,
-       ~ .#{$state}-tooltip {
-        display: block;
-      }
-    }
-  }
-
-  .was-validated .form-control-file:#{$state},
-  .form-control-file.is-#{$state} {
+  @include form-control-validated('.form-control, .custom-select, .form-control-file, .custom-control-input', $state) {
     ~ .#{$state}-feedback,
     ~ .#{$state}-tooltip {
       display: block;
     }
   }
 
-  .custom-control.custom-checkbox .custom-control-input,
-  .custom-control.custom-radio .custom-control-input {
-    .was-validated &:#{$state},
-    &.is-#{$state} {
-       ~ .custom-control-label {
-        color: $color;
-      }
+  @include form-control-validated('.form-control, .custom-select', $state) {
+    border-color: $color;
+  }
 
-      & ~ .custom-control-label::before,
-      &:focus ~ .custom-control-label::before,
-      &:active ~ .custom-control-label::before,
-      &:checked ~ .custom-control-label::before {
-        border-color: $color;
-      }
+  @include form-control-validated('.custom-control[class] .custom-control-input', $state) {
+    ~ .custom-control-label {
+      color: $color;
+    }
 
-      & ~ .custom-control-label::after {
-        background: rgba($color, .15) !important;
-      }
+    ~.custom-control-label::before,
+    &:focus ~ .custom-control-label::before,
+    &:active ~ .custom-control-label::before,
+    &:checked ~ .custom-control-label::before {
+      border-color: $color;
+    }
 
-       ~ .#{$state}-feedback,
-       ~ .#{$state}-tooltip {
-        display: block;
-      }
+    ~ .custom-control-label::after {
+      background: rgba($color, .15);
     }
   }
 
-  .custom-control.custom-checkbox .custom-control-input {
-    .was-validated &:#{$state}:checked ~ .custom-control-label::before,
-    &.is-#{$state}:checked ~ .custom-control-label::before {
+  @include form-control-validated('.custom-checkbox[class] .custom-control-input', $state) {
+    &:checked ~ .custom-control-label::before {
       background-color: $color;
       background-image: url(str-replace(str-replace($custom-checkbox-indicator-bg, '_COLOR_', yiq($color)), "#", "%23"));
     }
   }
 
-  .custom-control.custom-radio .custom-control-input {
-    .was-validated &:#{$state}:checked ~ .custom-control-label::before,
-    &.is-#{$state}:checked ~ .custom-control-label::before {
+  @include form-control-validated('.custom-radio[class] .custom-control-input', $state) {
+    &:checked ~ .custom-control-label::before {
       background-image: url(str-replace(str-replace($custom-radio-indicator-bg, '_COLOR_', $color), "#", "%23"));
     }
   }
 
-  .was-validated .custom-file-input:#{$state},
-  .custom-file-input.is-#{$state} {
-     ~ .custom-file-label {
-      border-color: $color !important;
+  @include form-control-validated('.custom-file-input', $state) {
+    ~ .custom-file-label {
+      border-color: $color;
+    }
+  }
+
+  // Validation icons
+  @if $enable-validation-icons {
+    // Inputs
+    @include form-control-validated('.form-control', $state) {
+      background-repeat: no-repeat;
+      background-size: calc(#{$input-height-inner} / 3) calc(#{$input-height-inner} / 3);
+
+      @include ltr-style {
+        background-image: $icon;
+        padding-right: 1.25rem;
+        background-position: center right;
+      }
+
+      @include rtl-style {
+        background-image: $icon-rtl;
+        padding-left: 1.25rem;
+        background-position: center left;
+      }
     }
 
-    &:focus ~ .custom-file-label {
-      box-shadow: 0 -1px 0 0 $color inset !important;
+    // Textareas
+    @include form-control-validated('textarea.form-control', $state) {
+      @include ltr-style {
+        background-position: top calc(#{$input-height-inner} / 3) right;
+      }
+      @include rtl-style {
+        background-position: top calc(#{$input-height-inner} / 3) left;
+      }
+    }
+    @include form-control-validated('textarea.form-control-sm', $state) {
+      @include ltr-style {
+        background-position: top calc(#{$input-height-inner-sm} / 4) right;
+      }
+      @include rtl-style {
+        background-position: top calc(#{$input-height-inner-sm} / 4) left;
+      }
+    }
+    @include form-control-validated('textarea.form-control-lg', $state) {
+      @include ltr-style {
+        background-position: top calc(#{$input-height-inner-lg} / 2.5) right;
+      }
+      @include rtl-style {
+        background-position: top calc(#{$input-height-inner-lg} / 2.5) left;
+      }
+    }
+
+    // Custom selects
+    @include form-control-validated('.custom-select[size="1"], .custom-select:not([size]):not([multiple])', $state) {
+      @include ltr-style {
+        padding-right: $custom-select-feedback-icon-padding;
+        background-image: $custom-select-indicator, $icon;
+        background-position: right center, right 1rem center;
+      }
+      @include rtl-style {
+        padding-left: $custom-select-feedback-icon-padding;
+        background-image: $custom-select-indicator-rtl, $icon-rtl;
+        background-position: left center, left 1rem center;
+      }
     }
   }
 }
@@ -1035,7 +1150,6 @@
 @mixin appwork-custom-file-input-theme($color) {
   .custom-file-input:focus ~ .custom-file-label {
     border-color: $color;
-    box-shadow: none !important;
 
     &::after {
       border-color: inherit;
@@ -1050,29 +1164,21 @@
   }
 }
 
-@mixin appwork-material-form-control-size($size, $line-height, $padding-y, $group-btn-font-size: null) {
+@mixin appwork-material-form-control-size($size, $padding-y) {
   @if $size == '' {
     .form-control,
     .custom-select,
     .custom-file-label,
     .input-group-text {
-      padding-bottom: calc(#{$padding-y} - 1px) !important;
-      line-height: $line-height;
+      padding-bottom: calc(#{$padding-y} - 1px);
     }
   } @else {
     .form-control-#{$size},
     .custom-select-#{$size},
     .input-group-#{$size} > .form-control,
     .input-group-#{$size} > .custom-select,
-    .input-group-#{$size} .input-group-text {
-      padding-bottom: calc(#{$padding-y} - 1px) !important;
-      line-height: $line-height;
-    }
-
-    .input-group-#{$size} > .input-group-prepend > .btn,
-    .input-group-#{$size} > .input-group-append > .btn {
-      padding-bottom: calc(#{$padding-y} - 1px) !important;
-      font-size: $group-btn-font-size;
+    .input-group-#{$size} .input-group-prepend > .input-group-text {
+      padding-bottom: calc(#{$padding-y} - 1px);
     }
   }
 }
@@ -1103,10 +1209,6 @@
 
   $line-height-computed: $description-font-size * $description-line-height;
   $delta: if($material-style, px-to-rem(ceil(rem-to-px($height * .125))), 0);
-
-  .switcher-blank .switcher-indicator {
-    top: $delta !important;
-  }
 
   .switcher-indicator {
     width: $width;
@@ -1213,7 +1315,7 @@
   }
 
   #{$selector} .switcher-input:active ~ .switcher-indicator {
-    box-shadow: none !important;
+    box-shadow: none;
   }
 }
 
@@ -1242,49 +1344,54 @@
 }
 
 @mixin appwork-switcher-validation-state($state, $color) {
-  .switcher-input {
+  .switcher-input[class] {
     .was-validated &:#{$state},
     &.is-#{$state} {
       &:checked ~ .switcher-indicator {
-        background: $color !important;
-        color: yiq($color) !important;
+        background: $color;
+        color: yiq($color);
       }
 
       &:focus ~ .switcher-indicator {
-        box-shadow: 0 0 0 $component-focus-shadow-width rgba($color, .4) !important;
+        box-shadow: 0 0 0 $component-focus-shadow-width rgba($color, .4);
       }
 
       &:active ~ .switcher-indicator {
-        box-shadow: none !important;
+        box-shadow: none;
       }
 
       ~ .switcher-label {
-        color: $color !important;
+        color: $color;
+      }
+
+      ~ .#{$state}-feedback,
+      ~ .#{$state}-tooltip {
+        display: block;
       }
     }
   }
 }
 
 @mixin appwork-material-switcher-validation-state($state, $color) {
-  .switcher-input {
+  .switcher-input[class] {
     .was-validated &:#{$state},
     &.is-#{$state} {
-      ~ .switcher-indicator {
-        background: rgba($color, .5) !important;
+      ~ .switcher-indicator[class] {
+        background: rgba($color, .5);
       }
 
       &:checked ~ .switcher-indicator {
         &::after {
-          background: $color !important;
+          background: $color;
         }
 
         &::before {
-          background: rgba($color, .15) !important;
+          background: rgba($color, .15);
         }
       }
 
       ~ .switcher-label {
-        color: $color !important;
+        color: $color;
       }
     }
   }
@@ -1293,7 +1400,7 @@
 // *******************************************************************************
 // * Tables
 
-@mixin table-row-variant($state, $background) {}
+@mixin table-row-variant($state, $background, $border: null) {}
 
 @mixin appwork-table-row-variant($parent, $background) {
   $bg: rgba-to-hex(rgba($background, .1), #fff);
@@ -1303,7 +1410,7 @@
   .table #{$parent},
   .table #{$parent} > th,
   .table #{$parent} > td {
-    border-color: rgba(0,0,0,.035);
+    border-color: rgba(0,0,0,.035) !important;
     background-color: $bg;
     color: $color;
   }
@@ -1518,4 +1625,22 @@
       border-color: map-get($colors, border);
     }
   }
+}
+
+@mixin appwork-toast-variant($parent, $background, $color: null) {
+  $color: if($color, $color, yiq($background));
+
+  #{$parent}.bs4-toast {
+    color: $color;
+    background-color: rgba($background, .9) !important;
+
+    .toast-header {
+      color: $color;
+      background-color: rgba($color, .1);
+    }
+  }
+}
+
+@mixin appwork-toast-theme($parent, $background, $color: null) {
+  @include appwork-toast-variant($parent, $background, $color);
 }

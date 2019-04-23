@@ -6,6 +6,7 @@ import SidenavHeader from './SidenavHeader'
 import SidenavBlock from './SidenavBlock'
 import SidenavDivider from './SidenavDivider'
 
+/* eslint-disable vue/no-unused-components */
 export {
   Sidenav,
   SidenavLink,
@@ -15,3 +16,4 @@ export {
   SidenavBlock,
   SidenavDivider
 }
+/* eslint-enable vue/no-unused-components */

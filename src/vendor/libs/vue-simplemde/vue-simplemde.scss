@@ -45,12 +45,12 @@
   }
 
   .markdown-editor {
-    border: 1px solid $border-color;
+    border: 1px solid $input-border-color;
     background: #fff;
   }
 
   .CodeMirror {
-    border-color: $border-color;
+    border-color: $input-border-color;
     border-right: 0;
     border-bottom: 0;
     border-left: 0;
@@ -72,13 +72,13 @@
 
       &.active,
       &:hover {
-        border-color: $border-color;
+        border-color: $input-border-color;
         background: none;
       }
     }
 
     i.separator {
-      border-left-color: $border-color;
+      border-left-color: $input-border-color;
     }
   }
 
@@ -88,17 +88,17 @@
   }
 
   .editor-preview-side {
-    border-color: $border-color;
+    border-color: $input-border-color;
     border-right: 0;
     border-bottom: 0;
   }
 
   &[dir=rtl] .editor-preview-side {
-    border-right: 1px solid $border-color;
+    border-right: 1px solid $input-border-color;
   }
 
   .editor-statusbar {
-    border-top: 1px solid $border-color;
+    border-top: 1px solid $input-border-color;
   }
 }
 
@@ -111,12 +111,12 @@
   }
 
   .markdown-editor {
-    border: 1px solid $border-color;
+    border: 1px solid $input-border-color;
     background: #fff;
   }
 
   .CodeMirror {
-    border-color: $border-color;
+    border-color: $input-border-color;
     border-right: 0;
     border-bottom: 0;
     border-left: 0;
@@ -138,13 +138,13 @@
 
       &.active,
       &:hover {
-        border-color: $border-color;
+        border-color: $input-border-color;
         background: none;
       }
     }
 
     i.separator {
-      border-left-color: $border-color;
+      border-left-color: $input-border-color;
     }
   }
 
@@ -154,16 +154,16 @@
   }
 
   .editor-preview-side {
-    border-color: $border-color;
+    border-color: $input-border-color;
     border-right: 0;
     border-bottom: 0;
   }
 
   &[dir=rtl] .editor-preview-side {
-    border-right: 1px solid $border-color;
+    border-right: 1px solid $input-border-color;
   }
 
   .editor-statusbar {
-    border-top: 1px solid $border-color;
+    border-top: 1px solid $input-border-color;
   }
 }

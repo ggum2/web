@@ -4,10 +4,14 @@
 @import "./_theme/uikit";
 
 $primary-color: #4c84ff;
-$body-bg: #f8f8f8;
+$body-bg: #f5f5f5;
 
 body {
   background: $body-bg;
+}
+
+.bg-body {
+  background: $body-bg !important;
 }
 
 @include appwork-common-material-theme($primary-color);
@@ -39,7 +43,8 @@ body {
     border-left: 4px solid $primary-color;
   }
 
-  .layout-collapsed &:not(:hover) {
+  .layout-collapsed &:not(:hover),
+  &.sidenav-collapsed:not(:hover) {
     .sidenav-item .sidenav-item.active > .sidenav-link:not(.sidenav-toggle)::after {
       display: none;
     }

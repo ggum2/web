@@ -9,6 +9,7 @@
   border-radius: 60rem;
   vertical-align: middle;
   font-weight: normal;
+  cursor: default;
 
   @include appwork-switcher-size-base($switcher-width, $switcher-height, $switcher-font-size, $switcher-label-font-size, $switcher-label-line-height);
 
@@ -80,7 +81,7 @@
       }
 
       .switcher-input:disabled ~ & {
-        display: none !important;
+        display: none;
       }
     }
   }
@@ -118,7 +119,7 @@
   }
 
   @if $material-style {
-    display: none !important;
+    display: none;
   }
 }
 
@@ -140,7 +141,7 @@
   }
 
   .switcher-input:not(:checked) ~ .switcher-indicator & {
-    color: transparent !important;
+    color: transparent;
   }
 }
 
@@ -148,7 +149,7 @@
 .switcher-input:checked ~ .switcher-indicator {
   .switcher-no {
     left: 100%;
-    color: transparent !important;
+    color: transparent;
 
     @include rtl-style {
       right: 100%;
@@ -189,20 +190,17 @@
 // *******************************************************************************
 // * Disabled
 
-.switcher-input:disabled,
-fieldset[disabled] .switcher-input {
+.switcher-input:disabled {
    ~ .switcher-indicator {
     opacity: .5;
-    cursor: not-allowed !important;
 
     &::after {
-      box-shadow: none !important;
+      box-shadow: none;
     }
   }
 
    ~ .switcher-label {
-    color: $switcher-label-disabled-color !important;
-    cursor: not-allowed;
+    color: $switcher-label-disabled-color;
   }
 }
 
@@ -267,6 +265,11 @@ fieldset[disabled] .switcher-input {
 
 // *******************************************************************************
 // * Validation states
+
+.switcher .valid-feedback,
+.switcher .invalid-feedback {
+  padding-left: $switcher-gutter;
+}
 
 @if $material-style {
   @include appwork-material-switcher-validation-state("valid", $form-feedback-valid-color);

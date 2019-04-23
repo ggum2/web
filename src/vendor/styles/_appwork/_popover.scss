@@ -24,7 +24,7 @@
 
 @if $material-style {
   .popover {
-    transition: none !important;
+    transition: none;
   }
 
   .popover-header {

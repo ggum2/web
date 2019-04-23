@@ -31,7 +31,7 @@
   @include vue-multiselect-theme($background, $color);
   @include vue-input-tag-theme($background, $color);
   @include vuejs-datepicker-theme($background, $color);
-  @include vue-flatpickr-component-theme($background, $color);
+  @include flatpickr-theme($background, $color);
   @include sweet-modal-vue-theme($background);
   @include vue-notification-theme($background, $color);
   @include vue-form-wizard-theme($background);
@@ -49,7 +49,7 @@
   @include material-vue-multiselect-theme($background, $color);
   @include vue-input-tag-theme($background, $color);
   @include vuejs-datepicker-theme($background, $color);
-  @include vue-flatpickr-component-theme($background, $color);
+  @include flatpickr-theme($background, $color);
   @include sweet-modal-vue-theme($background);
   @include vue-notification-theme($background, $color);
   @include vue-form-wizard-theme($background);

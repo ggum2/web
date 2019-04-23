@@ -5,8 +5,17 @@
 .breadcrumb-item a {
   color: $breadcrumb-color;
 
-  @include hover {
+  @include hover-focus {
     color: $breadcrumb-active-color;
+  }
+}
+
+.breadcrumb-item.active a {
+  &,
+  &:hover,
+  &:focus,
+  &:active {
+    color: inherit;
   }
 }
 

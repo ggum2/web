@@ -11,7 +11,7 @@
     }
   }
 
-  .carousel-item-next,
+  .carousel-item-next:not(.carousel-item-left),
   .active.carousel-item-right {
     transform: translateX(-100%);
 
@@ -20,7 +20,7 @@
     }
   }
 
-  .carousel-item-prev,
+  .carousel-item-prev:not(.carousel-item-right),
   .active.carousel-item-left {
     transform: translateX(100%);
 

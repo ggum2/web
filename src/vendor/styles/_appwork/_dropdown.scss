@@ -14,7 +14,9 @@
   }
 
   // Animations
-  @if $material-style {
+  @if not $material-style {
+    animation: dropdownAnimation .1s;
+  } @else {
     transform-origin: top left;
     animation: dropdownAnimation .25s;
 
@@ -53,15 +55,15 @@
 @if $material-style {
   .dropdown-item,
   .dropdown-menu > li {
-    display: block !important;
+    display: block;
 
     // Ripple
     .waves-ripple {
-      background: rgba(0, 0, 0, .1) !important;
+      background: rgba(0, 0, 0, .1);
     }
     &.active .waves-ripple,
     &.disabled .waves-ripple {
-      display: none !important;
+      display: none;
     }
   }
 }
@@ -71,7 +73,7 @@
 .dropdown-toggle-hide-arrow > .dropdown-toggle {
   &::before,
   &::after {
-    display: none !important;
+    display: none;
   }
 }
 
@@ -119,57 +121,46 @@
 // *******************************************************************************
 // * Dropdown toggle
 
-.dropdown-toggle {
-  &::after,
-  &::before {
-    vertical-align: middle !important;
-  }
-
-  &::after,
-  .dropup &::after,
-  .dropright &::after {
-    margin-left: .5em;
-  }
-
-  .dropleft &::before {
-    margin-right: .5em;
-  }
-}
-
-@include rtl-only {
-  .dropdown-toggle::after,
-  .dropup .dropdown-toggle::after {
-    margin-right: .5em;
-    margin-left: 0;
-  }
-
+@if $enable-caret {
   .dropleft .dropdown-toggle::before,
   .dropright .dropdown-toggle::after {
-    display: none;
+    vertical-align: $caret-vertical-align;
   }
 
-  @if $enable-caret {
-    .dropright .dropdown-toggle::before {
-      content: "";
-      display: inline-block;
-      margin-right: 0;
-      margin-left: .5em;
+  @include rtl-only {
+    .dropdown-toggle::after {
+      margin-right: $caret-spacing;
+      margin-left: 0;
+    }
 
-      @include caret-right;
+    .dropleft .dropdown-toggle::before,
+    .dropright .dropdown-toggle::after {
+      display: none;
     }
 
     .dropleft .dropdown-toggle::after {
       content: "";
       display: inline-block;
-      margin-right: .5em;
+      margin-right: $caret-spacing;
       margin-left: 0;
 
       @include caret-left;
     }
+
+    .dropright .dropdown-toggle::before {
+      content: "";
+      display: inline-block;
+      margin-right: 0;
+      margin-left: $caret-spacing;
+      vertical-align: $caret-vertical-align;
+
+      @include caret-right;
+    }
   }
 }
 
-.dropdown-toggle-split::after {
+.dropdown-toggle-split::after,
+.dropdown-toggle-split::before {
   margin-right: 0 !important;
   margin-left: 0 !important;
 }

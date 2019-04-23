@@ -1,4 +1,8 @@
-@mixin plyr-theme($background, $color) {
+@import "~@/vendor/styles/_appwork/functions";
+
+@mixin plyr-theme($background, $color: null) {
+  $color: if($color, $color, yiq($background));
+
   .plyr input[type='range']::-ms-fill-lower {
     background: $background !important;
   }

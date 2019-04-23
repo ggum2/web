@@ -20,7 +20,7 @@
 
 @if $material-style {
   .tooltip {
-    transition: none !important;
+    transition: none;
   }
 
   .tooltip.bs-tooltip-top,

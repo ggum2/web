@@ -1,6 +1,6 @@
 @import "~@/vendor/styles/_appwork/functions";
 
-@mixin vue-flatpickr-component-theme($background, $color) {
+@mixin flatpickr-theme($background, $color: null) {
   $color: if($color, $color, yiq($background));
   $in-range-bg: rgba-to-hex(rgba($background, .15), #fff);
   $in-range-color: yiq($in-range-bg);

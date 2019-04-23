@@ -11,6 +11,32 @@
 }
 
 // *******************************************************************************
+// * Button groups within input group addon
+
+.input-group>.input-group-append>.btn-group>.btn,
+.input-group>.input-group-prepend:first-child>.btn-group:not(:first-child)>.btn,
+.input-group>.input-group-prepend:not(:first-child)>.btn-group>.btn {
+  @include border-left-radius(0);
+}
+
+.input-group>.input-group-prepend>.btn-group>.btn,
+.input-group>.input-group-append:last-child>.btn-group:not(:last-child)>.btn,
+.input-group>.input-group-append:not(:last-child)>.btn-group>.btn {
+  @include border-right-radius(0);
+}
+
+.input-group-append,
+.input-group-prepend {
+  .btn + .btn-group,
+  .btn-group + .btn,
+  .btn-group+.btn-group,
+  .btn-group+.input-group-text,
+  .input-group-text+.btn-group {
+    margin-left: -1 * $input-border-width;
+  }
+}
+
+// *******************************************************************************
 // * Material
 
 @if $material-style {
@@ -18,84 +44,45 @@
     border-bottom-width: 1px;
   }
 
-  .input-group-text + .input-group-text {
+  .input-group-text+.input-group-text,
+  .input-group-prepend .input-group-text:first-child,
+  .input-group-append .input-group-text:first-child,
+  .input-group>.form-control:first-child,
+  .input-group>.custom-select:first-child,
+  .input-group>.form-control+.form-control,
+  .input-group>.form-control+.custom-select,
+  .input-group>.custom-select+.form-control,
+  .input-group>.custom-select+.custom-select {
     @include ltr-style {
       padding-left: 0;
     }
+
     @include rtl-style {
       padding-right: 0;
     }
   }
 
-  .input-group-prepend .input-group-text:first-child {
+  .input-group-prepend .input-group-text:last-child,
+  .input-group-append .input-group-text:last-child,
+  .input-group>.form-control:last-child {
     @include ltr-style {
-      padding-left: 0;
-    }
-    @include rtl-style {
       padding-right: 0;
     }
-  }
 
-  .input-group-prepend .input-group-text:last-child {
-    @include ltr-style {
-      padding-right: 0;
-    }
     @include rtl-style {
       padding-left: 0;
     }
   }
 
-  .input-group-append .input-group-text:last-child {
+  .input-group>.custom-select:last-child {
     @include ltr-style {
-      padding-right: 0;
+      padding-right: $custom-select-padding-x;
+      background-position: right center;
     }
-    @include rtl-style {
-      padding-left: 0;
-    }
-  }
 
-  .input-group-append .input-group-text:first-child {
-    @include ltr-style {
-      padding-left: 0;
-    }
     @include rtl-style {
-      padding-right: 0;
-    }
-  }
-
-  .input-group > .form-control:first-child,
-  .input-group > .custom-select:first-child,
-  .input-group > .form-control + .form-control,
-  .input-group > .form-control + .custom-select,
-  .input-group > .custom-select + .form-control,
-  .input-group > .custom-select + .custom-select {
-    &:not([class*='px-']):not([class*='pl-']) {
-      @include ltr-style {
-        padding-left: 0;
-      }
-      @include rtl-style {
-        padding-right: 0;
-      }
-    }
-  }
-
-  .input-group > .form-control:last-child:not([class*='px-']):not([class*='pr-']) {
-    @include ltr-style {
-      padding-right: 0;
-    }
-    @include rtl-style {
-      padding-left: 0;
-    }
-  }
-
-  .input-group > .custom-select:last-child:not([class*='px-']):not([class*='pr-']) {
-    @include ltr-style {
-      padding-right: $custom-select-padding-x !important;
-      background-position: right center !important;
-    }
-    @include rtl-style {
-      padding-left: $custom-select-padding-x !important;
-      background-position: left center !important;
+      padding-left: $custom-select-padding-x;
+      background-position: left center;
     }
   }
 }
@@ -104,111 +91,112 @@
 // * RTL
 
 @include rtl-only {
-  // Reset input border radius
+  // Reset border radius
 
-  .input-group .form-control,
-  .input-group .custom-select,
-  .input-group .custom-file-label,
-  .input-group .custom-file-label::before {
-    @include border-radius($input-border-radius !important);
+  .input-group>.form-control,
+  .input-group>.custom-select,
+  .input-group>.input-group-prepend>.input-group-text,
+  .input-group>.input-group-append>.input-group-text,
+  .input-group>.custom-file .custom-file-label,
+  .input-group>.custom-file .custom-file-label::before {
+    @include border-radius($input-border-radius);
+  }
+  .input-group>.input-group-prepend>.btn,
+  .input-group>.input-group-append>.btn,
+  .input-group>.input-group-prepend>.btn-group>.btn,
+  .input-group>.input-group-append>.btn-group>.btn {
+    @include border-radius($btn-border-radius);
   }
 
-  .form-control,
-  .custom-select {
-    .input-group-sm & {
-      @include border-radius($input-border-radius-sm !important);
-    }
-
-    .input-group-lg & {
-      @include border-radius($input-border-radius-lg !important);
-    }
+  .input-group-lg>.form-control,
+  .input-group-lg>.custom-select,
+  .input-group-lg>.input-group-prepend>.input-group-text,
+  .input-group-lg>.input-group-append>.input-group-text,
+  .input-group-lg>.custom-file .custom-file-label,
+  .input-group-lg>.custom-file .custom-file-label::before {
+    @include border-radius($input-border-radius-lg);
+  }
+  .input-group-lg>.input-group-prepend>.btn,
+  .input-group-lg>.input-group-append>.btn,
+  .input-group-lg>.input-group-prepend>.btn-group>.btn,
+  .input-group-lg>.input-group-append>.btn-group>.btn {
+    @include border-radius($btn-border-radius-lg);
   }
 
-  // Reset addon border radius
-
-  .input-group > .input-group-prepend,
-  .input-group > .input-group-append {
-    .btn,
-    .input-group-text {
-      @include border-radius($border-radius !important);
-    }
+  .input-group-sm>.form-control,
+  .input-group-sm>.custom-select,
+  .input-group-sm>.input-group-prepend>.input-group-text,
+  .input-group-sm>.input-group-append>.input-group-text,
+  .input-group-sm>.custom-file .custom-file-label,
+  .input-group-sm>.custom-file .custom-file-label::before {
+    @include border-radius($input-border-radius-sm);
   }
-
-  .input-group-sm > .input-group-prepend,
-  .input-group-sm > .input-group-append {
-    .btn,
-    .input-group-text {
-      @include border-radius($border-radius-sm !important);
-    }
-  }
-
-  .input-group-lg > .input-group-prepend,
-  .input-group-lg > .input-group-append {
-    .btn,
-    .input-group-text {
-      @include border-radius($border-radius-lg !important);
-    }
+  .input-group-sm>.input-group-prepend>.btn,
+  .input-group-sm>.input-group-append>.btn-group>.btn,
+  .input-group-sm>.input-group-prepend>.btn-group>.btn,
+  .input-group-sm>.input-group-append>.btn {
+    @include border-radius($btn-border-radius-sm);
   }
 
   // Remove border radius
 
-  .input-group .form-control,
-  .input-group .custom-select {
+  .input-group>.form-control,
+  .input-group>.custom-select {
     &:not(:last-child) {
-      @include border-left-radius(0 !important);
+      @include border-left-radius(0);
     }
 
     &:not(:first-child) {
-      @include border-right-radius(0 !important);
+      @include border-right-radius(0);
     }
   }
 
-  .input-group .custom-file {
+  .input-group>.custom-file {
+
     &:not(:last-child) .custom-file-label,
-    &:not(:last-child) .custom-file-label::before {
-      @include border-left-radius(0 !important);
+    &:not(:last-child) .custom-file-label::after {
+      @include border-left-radius(0);
     }
 
-    &:not(:first-child) .custom-file-label,
-    &:not(:first-child) .custom-file-label::before {
-      @include border-right-radius(0 !important);
+    &:not(:first-child) .custom-file-label {
+      @include border-right-radius(0);
     }
   }
 
-  .input-group > .input-group-append > .btn,
-  .input-group > .input-group-append > .input-group-text,
-  .input-group > .input-group-prepend:not(:first-child) > .btn,
-  .input-group > .input-group-prepend:not(:first-child) > .input-group-text,
-  .input-group > .input-group-prepend:first-child > .btn:not(:first-child),
-  .input-group > .input-group-prepend:first-child > .input-group-text:not(:first-child),
-  .input-group > .input-group-append > .b-dropdown > .btn,
-  .input-group > .input-group-prepend:not(:first-child) > .b-dropdown > .btn,
-  .input-group > .input-group-prepend:first-child > .b-dropdown:not(:first-child) > .btn,
-  .input-group > .input-group-prepend:first-child > .b-dropdown > .dropdown-toggle-split {
-    @include border-right-radius(0 !important);
+  .input-group>.input-group-prepend>.btn,
+  .input-group>.input-group-prepend>.input-group-text,
+  .input-group>.input-group-append:not(:last-child)>.btn,
+  .input-group>.input-group-append:not(:last-child)>.input-group-text,
+  .input-group>.input-group-append:last-child>.btn:not(:last-child):not(.dropdown-toggle),
+  .input-group>.input-group-append:last-child>.input-group-text:not(:last-child),
+  .input-group>.input-group-prepend>.btn-group>.btn,
+  .input-group>.input-group-append>.btn-group>.btn:not(:last-of-type),
+  .input-group>.input-group-append:last-child>.btn-group:not(:last-child)>.btn {
+    @include border-left-radius(0);
   }
 
-  .input-group > .input-group-prepend > .btn,
-  .input-group > .input-group-prepend > .input-group-text,
-  .input-group > .input-group-append:not(:last-child) > .btn,
-  .input-group > .input-group-append:not(:last-child) > .input-group-text,
-  .input-group > .input-group-append:last-child > .btn:not(:last-child):not(.dropdown-toggle),
-  .input-group > .input-group-append:last-child > .input-group-text:not(:last-child),
-  .input-group > .input-group-prepend > .b-dropdown > .btn,
-  .input-group > .input-group-append:not(:last-child) > .b-dropdown > .btn,
-  .input-group > .input-group-append:last-child > .b-dropdown:not(:last-child):not(.dropdown-toggle) > .btn,
-  .input-group > .input-group-append:last-child > .b-dropdown:not(:last-child) > .dropdown-toggle-split {
-    @include border-left-radius(0 !important);
+  .input-group>.input-group-append>.btn,
+  .input-group>.input-group-append>.input-group-text,
+  .input-group>.input-group-prepend:not(:first-child)>.btn,
+  .input-group>.input-group-prepend:not(:first-child)>.input-group-text,
+  .input-group>.input-group-prepend:first-child>.btn:not(:first-child),
+  .input-group>.input-group-prepend:first-child>.input-group-text:not(:first-child),
+  .input-group>.input-group-append>.btn-group>.btn,
+  .input-group>.input-group-prepend>.btn-group>.btn:not(:first-of-type),
+  .input-group>.input-group-prepend:first-child>.btn-group:not(:first-child)>.btn {
+    @include border-right-radius(0);
   }
 
   // Margins
 
-  .input-group .form-control,
-  .input-group .custom-select,
-  .input-group .custom-file {
-     + .form-control,
-     + .custom-select,
-     + .custom-file {
+  .input-group>.form-control,
+  .input-group>.form-control-plaintext,
+  .input-group>.custom-select,
+  .input-group>.custom-file {
+
+    +.form-control,
+    +.custom-select,
+    +.custom-file {
       margin-right: -$input-border-width;
       margin-left: 0;
     }
@@ -216,10 +204,15 @@
 
   .input-group-prepend,
   .input-group-append {
-    .btn + .btn,
-    .btn + .input-group-text,
-    .input-group-text + .input-group-text,
-    .input-group-text + .btn {
+    .btn+.btn,
+    .btn+.input-group-text,
+    .input-group-text+.input-group-text,
+    .input-group-text+.btn,
+    .btn+.btn-group,
+    .btn-group+.btn,
+    .btn-group+.btn-group,
+    .btn-group+.input-group-text,
+    .input-group-text+.btn-group {
       margin-right: -$input-border-width;
       margin-left: 0;
     }

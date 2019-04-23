@@ -14,6 +14,10 @@
   padding-bottom: 0 !important;
 }
 
+.cv-day {
+  justify-content: flex-end;
+}
+
 .cv-event.hasUrl:hover {
   text-decoration: underline;
 }

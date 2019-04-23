@@ -1,7 +1,6 @@
 @import '../_custom-variables/pages';
 
 $clients-content-bg: transparent !default;
-$clients-sidebox-bg: #f3f3f3 !default;
 $clients-sidebox-width: 20rem !default;
 $clients-transition-duration: .2s !default;
 
@@ -29,7 +28,6 @@ $clients-transition-duration: .2s !default;
   right: -$clients-sidebox-width;
   height: 100%;
   width: $clients-sidebox-width;
-  background: $clients-sidebox-bg;
 
   [dir=rtl] & {
     right: auto;

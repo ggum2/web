@@ -29,7 +29,7 @@
   }
 }
 
-.accordion .card {
+.accordion > .card {
   border-radius: $border-radius !important;
   border: $border-width solid $border-color !important;
 

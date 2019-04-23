@@ -1,3 +1,5 @@
+@import '~node_modules/bootstrap-vue/src/index.scss';
+
 // Base
 //
 
@@ -82,5 +84,77 @@ table.b-table > thead {
   &.card-table > thead > tr > th.sorting:first-child,
   &.card-table > tfoot > tr > th.sorting:first-child {
     padding-right: $card-spacer-x;
+  }
+}
+
+// Cards
+//
+
+.default-style {
+  @import "~@/vendor/styles/_appwork/include";
+
+  .card-img-left {
+    @include border-left-radius(if($border-radius != 0px, calc(#{$border-radius} - 1px), 0));
+  }
+
+  .card-img-right {
+    @include border-right-radius(if($border-radius !=0px, calc(#{$border-radius} - 1px), 0));
+  }
+
+  &[dir=rtl] {
+    .card-img-left {
+      @include border-left-radius(0);
+      @include border-right-radius(if($border-radius !=0px, calc(#{$border-radius} - 1px), 0));
+    }
+
+    .card-img-right {
+      @include border-right-radius(0);
+      @include border-left-radius(if($border-radius !=0px, calc(#{$border-radius} - 1px), 0));
+    }
+  }
+}
+
+.material-style {
+  @import "~@/vendor/styles/_appwork/include-material";
+
+  .card-img-left {
+    @include border-left-radius(if($border-radius !=0px, calc(#{$border-radius} - 1px), 0));
+  }
+
+  .card-img-right {
+    @include border-right-radius(if($border-radius !=0px, calc(#{$border-radius} - 1px), 0));
+  }
+
+  &[dir=rtl] {
+    .card-img-left {
+      @include border-left-radius(0);
+      @include border-right-radius(if($border-radius !=0px, calc(#{$border-radius} - 1px), 0));
+    }
+
+    .card-img-right {
+      @include border-right-radius(0);
+      @include border-left-radius(if($border-radius !=0px, calc(#{$border-radius} - 1px), 0));
+    }
+  }
+}
+
+// Dropdowns
+//
+
+.default-style {
+  @import "~@/vendor/styles/_appwork/include";
+
+  .b-dropdown-form,
+  .b-dropdown-text {
+    padding: $dropdown-item-padding-y $dropdown-item-padding-x;
+  }
+}
+
+.material-style {
+  @import "~@/vendor/styles/_appwork/include-material";
+
+  .b-dropdown-form,
+  .b-dropdown-text {
+    padding: $dropdown-item-padding-y $dropdown-item-padding-x;
   }
 }

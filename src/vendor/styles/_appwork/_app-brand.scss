@@ -66,7 +66,7 @@
 }
 
 @media (min-width: map-get($grid-breakpoints, lg)) {
-  .layout-collapsed:not(.layout-offcanvas):not(.layout-fixed-offcanvas) .layout-sidenav:not(:hover) {
+  .layout-collapsed:not(.layout-sidenav-hover):not(.layout-offcanvas):not(.layout-fixed-offcanvas) .layout-sidenav {
     @include appwork-app-brand-collapsed();
   }
 }

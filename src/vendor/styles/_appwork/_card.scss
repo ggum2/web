@@ -19,13 +19,13 @@
 
 .card-header {
   line-height: $component-line-height;
-
-  @if $material-style {
-    border-bottom-width: 1px;
-  }
 }
 
 @if $material-style {
+  .card-header {
+    border-bottom-width: 1px;
+  }
+
   .card-footer {
     border-top-width: 1px;
   }
@@ -145,9 +145,19 @@ html[dir=rtl] .card-hover[class] {
 
 @include rtl-only {
   @include media-breakpoint-up(sm) {
-    .card-group .card {
+    .card-group > .card {
       border: $card-border-width solid $card-border-color;
       border-radius: $card-border-radius;
+
+      .card-img-top,
+      .card-header:first-child {
+        @include border-top-radius($card-inner-border-radius);
+      }
+
+      .card-img-bottom,
+      .card-footer:last-child {
+        @include border-bottom-radius($card-inner-border-radius);
+      }
 
       + .card {
         border-right: 0;
@@ -156,36 +166,31 @@ html[dir=rtl] .card-hover[class] {
 
     // Handle rounded corners
     @if $enable-rounded {
-      .card-group .card:first-child {
-        @include border-left-radius(0);
+      .card-group > .card {
+        &:not(:last-child) {
+          @include border-left-radius(0);
 
-        .card-img-top {
-          border-top-left-radius: 0;
+          .card-img-top,
+          .card-header {
+            border-top-left-radius: 0;
+          }
+          .card-img-bottom,
+          .card-footer {
+            border-bottom-left-radius: 0;
+          }
         }
 
-        .card-img-bottom {
-          border-bottom-left-radius: 0;
-        }
-      }
+        &:not(:first-child) {
+          @include border-right-radius(0);
 
-      .card-group .card:last-child {
-        @include border-right-radius(0);
-
-        .card-img-top {
-          border-top-right-radius: 0;
-        }
-
-        .card-img-bottom {
-          border-bottom-right-radius: 0;
-        }
-      }
-
-      .card-group .card:not(:first-child):not(:last-child) {
-        border-radius: 0;
-
-        .card-img-top,
-        .card-img-bottom {
-          border-radius: 0;
+          .card-img-top,
+          .card-header {
+            border-top-right-radius: 0;
+          }
+          .card-img-bottom,
+          .card-footer {
+            border-bottom-right-radius: 0;
+          }
         }
       }
     }

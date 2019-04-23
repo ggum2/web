@@ -15,10 +15,6 @@
   font-weight: $font-weight-semibold;
 }
 
-.table-responsive > .table {
-  max-width: none;
-}
-
 // *******************************************************************************
 // * Active
 
@@ -42,10 +38,16 @@
   margin-bottom: 0;
 }
 
-.card-table,
-.card-table th,
-.card-table td {
-  border-color: $card-inner-border-color;
+.card,
+.nav-tabs-top,
+.nav-tabs-right,
+.nav-tabs-bottom,
+.nav-tabs-left {
+  .table:not(.table-dark),
+  .table:not(.table-dark) thead:not(.thead-dark) th,
+  .table:not(.table-dark) td {
+    border-color: rgba-to-hex($card-inner-border-color);
+  }
 }
 
 .card-table > thead:first-child > tr:first-child,

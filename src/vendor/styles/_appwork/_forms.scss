@@ -15,41 +15,14 @@
     }
   }
 
-  :not(.input-group) > .form-control:not([class*='px-']):not([class*='pl-']) {
-    @include ltr-style {
-      padding-left: 0;
-    }
-    @include rtl-style {
-      padding-right: 0;
-    }
-  }
-
-  :not(.input-group) > .form-control:not([class*='px-']):not([class*='pr-']) {
-    @include ltr-style {
-      padding-right: 0;
-    }
-    @include rtl-style {
-      padding-left: 0;
-    }
+  :not(.input-group) > .form-control {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
 // *******************************************************************************
 // * Sizing
-
-.form-control {
-  min-height: $input-height;
-}
-
-.form-control-sm,
-.input-group-sm .form-control {
-  min-height: $input-height-sm;
-}
-
-.form-control-lg,
-.input-group-lg .form-control {
-  min-height: $input-height-lg;
-}
 
 select.form-control[size="0"]:not([multiple]) {
   height: $input-height;
@@ -64,20 +37,9 @@ select.form-control-lg[size="0"]:not([multiple]) {
 }
 
 @if $material-style {
-  @include appwork-material-form-control-size('', $input-line-height, $input-btn-padding-y);
-  @include appwork-material-form-control-size('sm', $input-line-height-sm, $input-btn-padding-y-sm, $input-btn-font-size-sm);
-  @include appwork-material-form-control-size('lg', $input-line-height-lg, $input-btn-padding-y-lg, $input-btn-font-size-lg);
-}
-
-// *******************************************************************************
-// * Text
-
-.form-control-plaintext {
-  color: $body-color;
-
-  .form-inline & {
-    width: auto;
-  }
+  @include appwork-material-form-control-size('', $input-btn-padding-y);
+  @include appwork-material-form-control-size('sm', $input-btn-padding-y-sm);
+  @include appwork-material-form-control-size('lg', $input-btn-padding-y-lg);
 }
 
 // *******************************************************************************
@@ -117,45 +79,25 @@ select.form-control-lg[size="0"]:not([multiple]) {
 // * Labels
 
 .form-label,
-.col-form-label,
-.col-form-legend {
-  margin-bottom: if($input-btn-border-width != 0px, calc(#{$input-btn-padding-y} - #{$input-btn-border-width * 2}), $input-btn-padding-y);
+.col-form-label {
+  @if not $material-style {
+    margin-bottom: calc(#{$input-padding-y} - #{$input-border-width * 2});
+  } @else {
+    margin-bottom: 0;
+  }
   font-weight: $label-font-weight;
   font-size: $label-font-size;
-}
-
-.col-form-label,
-.col-form-legend {
   padding-bottom: 0;
-  line-height: $input-btn-line-height;
 }
 
 .form-label-sm,
-.col-form-label-sm,
-.col-form-legend-sm {
-  font-size: $font-size-sm !important;
-  line-height: $input-btn-line-height-sm;
+.col-form-label-sm {
+  font-size: $font-size-sm;
 }
 
 .form-label-lg,
-.col-form-label-lg,
-.col-form-legend-lg {
-  font-size: $font-size-lg !important;
-  line-height: $input-btn-line-height-lg;
-}
-
-@if $material-style {
-  .form-label,
-  .col-form-label,
-  .col-form-legend,
-  .form-label-sm,
-  .col-form-label-sm,
-  .col-form-legend-sm,
-  .col-form-label-lg,
-  .col-form-legend-lg,
-  .form-label-lg {
-    margin-bottom: 0;
-  }
+.col-form-label-lg {
+  font-size: $font-size-lg;
 }
 
 // *******************************************************************************
@@ -191,19 +133,18 @@ select.form-control-lg[size="0"]:not([multiple]) {
 // *******************************************************************************
 // * Validation states
 
-@if $material-style {
-  @include appwork-material-form-validation-state("valid", $form-feedback-valid-color);
-  @include appwork-material-form-validation-state("invalid", $form-feedback-invalid-color);
-} @else {
-  @include appwork-form-validation-state("valid", $form-feedback-valid-color);
-  @include appwork-form-validation-state("invalid", $form-feedback-invalid-color);
+@each $state, $data in $form-validation-states {
+  @if $material-style {
+    @include appwork-material-form-validation-state($state, map-get($data, color), map-get($data, icon), map-get($data, icon-rtl));
+  } @else {
+    @include appwork-form-validation-state($state, map-get($data, color), map-get($data, icon), map-get($data, icon-rtl));
+  }
 }
 
 // *******************************************************************************
 // * Inline forms
 
 .form-inline .custom-control {
-  display: block;
   width: 100%;
 }
 
@@ -218,18 +159,14 @@ select.form-control-lg[size="0"]:not([multiple]) {
       margin-left: $form-check-input-margin-x;
     }
   }
+
   .form-inline .custom-control,
   .form-inline .custom-select,
   .form-inline .form-control-plaintext {
-    display: inline-block;
     width: auto;
   }
 
   .form-inline .form-text {
     margin-top: 0;
-  }
-
-  .form-inline .form-label {
-    margin-bottom: 0 !important;
   }
 }

@@ -9,7 +9,8 @@
   width: 100%;
 }
 
-.layout-wrapper {
+.layout-offcanvas .layout-wrapper,
+.layout-fixed-offcanvas .layout-wrapper {
   overflow: hidden;
 }
 
@@ -196,17 +197,17 @@
 @include media-breakpoint-up(lg) {
   // Sidenav style
 
-  .layout-collapsed:not(.layout-offcanvas):not(.layout-fixed-offcanvas) {
-    .layout-sidenav:not(:hover) .sidenav-vertical,
-    .layout-sidenav.sidenav-vertical:not(:hover) {
+  .layout-collapsed:not(.layout-sidenav-hover):not(.layout-offcanvas):not(.layout-fixed-offcanvas) {
+    .layout-sidenav .sidenav-vertical,
+    .layout-sidenav.sidenav-vertical {
       @include sidenav-collapsed();
     }
   }
 
   @include rtl-only {
-    &.layout-collapsed:not(.layout-offcanvas):not(.layout-fixed-offcanvas) {
-      .layout-sidenav:not(:hover) .sidenav-vertical,
-      .layout-sidenav.sidenav-vertical:not(:hover) {
+    &.layout-collapsed:not(.layout-sidenav-hover):not(.layout-offcanvas):not(.layout-fixed-offcanvas) {
+      .layout-sidenav .sidenav-vertical,
+      .layout-sidenav.sidenav-vertical {
         @include sidenav-collapsed-rtl();
       }
     }
@@ -214,25 +215,25 @@
 
   // Sidenav position
 
-  .layout-collapsed {
-    .layout-sidenav:hover {
+  .layout-sidenav-hover.layout-collapsed {
+    .layout-sidenav {
       margin-right: -$sidenav-width + $sidenav-collapsed-width;
     }
 
-    &.layout-reversed .layout-sidenav:hover {
+    &.layout-reversed .layout-sidenav {
       margin-right: 0;
       margin-left: -$sidenav-width + $sidenav-collapsed-width;
     }
   }
 
   @include rtl-only {
-    &.layout-collapsed {
-      .layout-sidenav:hover {
+    &.layout-sidenav-hover.layout-collapsed {
+      .layout-sidenav {
         margin-right: 0;
         margin-left: -$sidenav-width + $sidenav-collapsed-width;
       }
 
-      &.layout-reversed .layout-sidenav:hover {
+      &.layout-reversed .layout-sidenav {
         margin-right: -$sidenav-width + $sidenav-collapsed-width;
         margin-left: 0;
       }
@@ -609,7 +610,7 @@ html:not(.layout-footer-fixed) .layout-content {
   // Collapsed
 
   .layout-collapsed:not(.layout-offcanvas):not(.layout-fixed-offcanvas) {
-    .layout-1 .layout-sidenav:hover {
+    &.layout-sidenav-hover .layout-1 .layout-sidenav {
       z-index: $zindex-layout-fixed - 5 !important;
     }
 

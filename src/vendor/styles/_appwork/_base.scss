@@ -11,7 +11,7 @@ body {
 
 @include media-breakpoint-up(md) {
   button.list-group-item {
-    outline: none !important;
+    outline: none;
   }
 }
 
@@ -133,7 +133,16 @@ body {
 // *******************************************************************************
 // * Material animations
 
-@if $material-style {
+@if not $material-style {
+  @include keyframes(dropdownAnimation) {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+} @else {
   @include keyframes(dropdownAnimation) {
     0% {
       opacity: 0;
@@ -193,7 +202,7 @@ body {
 
 @if $rtl-support {
   [dir=rtl] body {
-    text-align: right !important;
-    direction: rtl !important;
+    text-align: right;
+    direction: rtl;
   }
 }

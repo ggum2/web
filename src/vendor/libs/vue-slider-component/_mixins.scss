@@ -3,11 +3,11 @@
 @mixin vue-slider-variant($background, $color: null) {
   $color: if($color, $color, yiq($background));
 
-  .vue-slider-process {
+  .vue-slider-process,
+  .vue-slider-mark-step-active {
     background: $background !important;
   }
-  .vue-slider-tooltip {
-    border-color: $background !important;
+  .vue-slider-dot-tooltip-inner {
     background: $background !important;
     color: $color !important;
   }
@@ -17,14 +17,14 @@
   $color: if($color, $color, yiq($background));
 
   .vue-slider-process,
-  .vue-slider-dot {
+  .vue-slider-mark-step-active,
+  .vue-slider-dot-handle {
     background: $background !important;
   }
-  .vue-slider-dot {
+  .vue-slider-dot-handle {
     box-shadow: none !important;
   }
-  .vue-slider-tooltip {
-    border-color: $background !important;
+  .vue-slider-dot-tooltip-inner {
     background: $background !important;
     color: $color !important;
   }

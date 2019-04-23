@@ -1,7 +1,6 @@
 @import '../_custom-variables/pages';
 
 $messages-inner-bg: transparent !default;
-$messages-sidebox-bg: #f3f3f3 !default;
 $messages-sidebox-width: 14rem !default;
 $messages-sidebox-border-width: 1px !default;
 $messages-transition-duration: .2s !default;
@@ -50,10 +49,6 @@ $message-attachment-size: 4rem !default;
 
 .layout-sidenav-100vh .messages-wrapper .messages-sidebox {
   height: 100vh;
-}
-
-.messages-wrapper .messages-sidebox {
-  background: $messages-sidebox-bg;
 }
 
 .messages-card .messages-sidebox {

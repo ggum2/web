@@ -2,6 +2,7 @@
   .toasted {
     min-height: 0 !important;
     padding: 9px 20px !important;
+    font-weight: normal !important;
 
     .action {
       padding: 0 !important;
@@ -72,19 +73,20 @@
     font-size: $font-size-sm;
   }
 
-  .toasted.primary,
+  .toasted.toasted-primary,
   .toasted.bubble,
   .toasted.outline {
     box-shadow: $floating-component-shadow;
     font-size: $font-size-base;
+    box-shadow: none;
   }
 
-  .toasted.primary,
+  .toasted.toasted-primary,
   .toasted.bubble {
     font-weight: normal;
   }
 
-  .toasted.primary {
+  .toasted.toasted-primary {
     border-radius: $border-radius;
   }
 
@@ -110,19 +112,19 @@
     font-size: $font-size-sm;
   }
 
-  .toasted.primary,
+  .toasted.toasted-primary,
   .toasted.bubble,
   .toasted.outline {
     box-shadow: $floating-component-shadow;
     font-size: $font-size-base;
   }
 
-  .toasted.primary,
+  .toasted.toasted-primary,
   .toasted.bubble {
     font-weight: normal;
   }
 
-  .toasted.primary {
+  .toasted.toasted-primary {
     border-radius: $border-radius;
   }
 

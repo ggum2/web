@@ -4,10 +4,14 @@
 @import "./_theme/uikit";
 
 $primary-color: #1cbb84;
-$body-bg: #f8f8f8;
+$body-bg: #f5f5f5;
 
 body {
   background: $body-bg;
+}
+
+.bg-body {
+  background: $body-bg !important;
 }
 
 @include appwork-common-material-theme($primary-color);
@@ -39,9 +43,9 @@ body {
 
 .layout-sidenav,
 .layout-sidenav-horizontal {
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.07), 0 0 3px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 8px rgba($black, 0.07), 0 0 3px rgba($black, 0.05);
 }
 
 // Footer
 
-@include appwork-footer-variant('.bg-footer-theme', #f3f3f3, $color: $text-muted, $active-color: $body-color);
+@include appwork-footer-variant('.bg-footer-theme', #eee, $color: $text-muted, $active-color: $body-color);
