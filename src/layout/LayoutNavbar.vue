@@ -73,10 +73,3 @@ export default {
   }
 }
 </script>
-
-<style>
-  ::placeholder {
-    color: #fffc;
-    opacity: 1;
-  }
-</style>
