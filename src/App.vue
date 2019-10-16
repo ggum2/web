@@ -6,7 +6,7 @@
 
 <style src="@/vendor/styles/bootstrap-material.scss" lang="scss"></style>
 <style src="@/vendor/styles/appwork-material.scss" lang="scss"></style>
-<style src="@/vendor/styles/theme-paper-material.scss" lang="scss"></style>
+<style src="@/vendor/styles/theme-air-material.scss" lang="scss"></style>
 <style src="@/vendor/styles/colors-material.scss" lang="scss"></style>
 <style src="@/vendor/styles/uikit.scss" lang="scss"></style>
 <style src="./style.scss" lang="scss"></style>

@@ -26,17 +26,17 @@ export default function () {
 
     // Layout navbar color
     get layoutNavbarBg () {
-      return 'primary-dark navbar-dark'
+      return 'navbar-theme'
     },
 
     // Layout sidenav color
     get layoutSidenavBg () {
-      return 'sidenav-theme'
+      return 'success-darker sidenav-dark'
     },
 
     // Layout footer color
     get layoutFooterBg () {
-      return 'primary-dark footer-dark'
+      return 'footer-theme'
     },
 
     // Animate scrollTop
