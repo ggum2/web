@@ -23,6 +23,12 @@ const router = new Router({
       path: 'page-2',
       component: () => import('@/components/Page2')
     }]
+  }, {
+    path: '/login',
+    component: () => import('@/components/common/Login.vue')
+  }, {
+    path: '/register',
+    component: () => import('@/components/common/Register.vue')
   }]
 })
 

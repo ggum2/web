@@ -31,7 +31,8 @@ export default function () {
 
     // Layout sidenav color
     get layoutSidenavBg () {
-      return 'success-darker sidenav-dark'
+      // return 'success-darker sidenav-dark'
+      return 'primary-darker sidenav-dark'
     },
 
     // Layout footer color

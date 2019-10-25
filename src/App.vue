@@ -16,7 +16,7 @@ export default {
   name: 'app',
   metaInfo: {
     title: 'Index',
-    titleTemplate: '%s - Vue Starter'
+    titleTemplate: '%s - 주원이네'
   },
   updated () {
     // Remove loading state
